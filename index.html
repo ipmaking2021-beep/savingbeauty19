@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>沐凡老師 Vica｜AI資源整合架構師｜超級名片</title>
+  <meta name="description" content="沐凡老師 Vica｜AI資源整合架構師。品牌策略顧問、AI工具導入顧問、品牌商模架構師。協助企業與個人品牌整合品牌定位、商業模式、AI自動化與行銷系統。" />
+  <meta property="og:title" content="沐凡老師 Vica｜AI資源整合架構師" />
+  <meta property="og:description" content="品牌策略顧問｜AI工具導入顧問｜品牌商模架構師｜超級名片服務" />
+  <meta property="og:image" content="assets/mufan-super-card.png" />
+  <meta name="theme-color" content="#050507" />
+
+  <style>
+    :root {
+      --bg: #050507;
+      --gold: #d4af37;
+      --gold-light: #f6d77a;
+      --gold-dark: #8c651d;
+      --purple: #7b3ff2;
+      --text: #f6f0dd;
+      --muted: rgba(246,240,221,.72);
+      --panel: rgba(8, 9, 14, .9);
+      --line: rgba(246, 215, 122, .32);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(123,63,242,.16), transparent 36%),
+        radial-gradient(circle at 50% 100%, rgba(212,175,55,.12), transparent 34%),
+        #030305;
+      color: var(--text);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+    }
+
+    a { color: inherit; }
+
+    .page-shell {
+      width: min(100%, 935px);
+      margin: 0 auto;
+      position: relative;
+      background: #050507;
+      box-shadow: 0 0 80px rgba(0,0,0,.72), 0 0 0 1px rgba(246,215,122,.12);
+      overflow: hidden;
+    }
+
+    .hero-wrap { position: relative; }
+
+    .hero-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .hotspot {
+      position: absolute;
+      display: block;
+      border-radius: 999px;
+      background: transparent;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      z-index: 5;
+    }
+    .hotspot:focus-visible {
+      outline: 2px solid rgba(246, 215, 122, .9);
+      outline-offset: 3px;
+      box-shadow: 0 0 18px rgba(212, 175, 55, .42);
+    }
+
+    /* 透明點擊熱區：依照圖片比例定位，不顯示外框，因此不會跑版 */
+    .hotspot.top-consult { left: 84.2%; top: 2.6%; width: 13.3%; height: 4.7%; }
+    .hotspot.hero-consult { left: 47.0%; top: 20.1%; width: 14.7%; height: 3.4%; }
+    .hotspot.hero-vcard   { left: 63.3%; top: 20.1%; width: 14.5%; height: 3.4%; }
+    .hotspot.hero-line    { left: 79.5%; top: 20.1%; width: 13.8%; height: 3.4%; }
+    .hotspot.bottom-consult { left: 24.2%; top: 86.35%; width: 16.4%; height: 3.3%; }
+    .hotspot.bottom-line    { left: 43.4%; top: 86.35%; width: 15.2%; height: 3.3%; }
+    .hotspot.bottom-vcard   { left: 61.8%; top: 86.35%; width: 14.8%; height: 3.3%; }
+    .hotspot.footer-email { left: 11.6%; top: 96.05%; width: 24.2%; height: 2.4%; }
+    .hotspot.footer-line  { left: 43.0%; top: 96.05%; width: 17.6%; height: 2.4%; }
+    .hotspot.footer-web   { left: 66.0%; top: 96.05%; width: 25.0%; height: 2.4%; }
+
+
+    /* 上方導覽列透明熱區：點擊圖片上的選項，自動滑到對應內容 */
+    .hotspot.nav-home     { left: 35.7%; top: 1.65%; width: 6.2%; height: 4.4%; }
+    .hotspot.nav-about    { left: 42.6%; top: 1.65%; width: 9.4%; height: 4.4%; }
+    .hotspot.nav-service  { left: 53.2%; top: 1.65%; width: 9.6%; height: 4.4%; }
+    .hotspot.nav-projects { left: 64.7%; top: 1.65%; width: 9.4%; height: 4.4%; }
+    .hotspot.nav-cases    { left: 75.3%; top: 1.65%; width: 8.8%; height: 4.4%; }
+    .hotspot.nav-contact  { left: 84.0%; top: 1.65%; width: 6.8%; height: 4.4%; }
+
+    .info-section {
+      position: relative;
+      padding: 46px 38px 54px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(212,175,55,.14), transparent 32%),
+        radial-gradient(circle at 88% 10%, rgba(123,63,242,.18), transparent 34%),
+        linear-gradient(180deg, rgba(5,5,7,.98), rgba(7,8,13,.98));
+      border-top: 1px solid rgba(246,215,122,.18);
+    }
+
+    .info-title {
+      text-align: center;
+      margin: 0 auto 30px;
+    }
+    .info-title .eyebrow {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+    .info-title h1 {
+      margin: 10px 0 8px;
+      color: var(--gold-light);
+      font-size: clamp(30px, 6vw, 56px);
+      line-height: 1.15;
+      letter-spacing: .12em;
+      font-family: "Noto Serif TC", "Songti TC", serif;
+      font-weight: 600;
+    }
+    .info-title p {
+      margin: 0;
+      color: rgba(246,240,221,.82);
+      font-size: clamp(15px, 2.8vw, 20px);
+      letter-spacing: .1em;
+      line-height: 1.7;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .glass-card {
+      border: 1px solid rgba(246,215,122,.28);
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)),
+        rgba(8,9,14,.72);
+      box-shadow: 0 18px 44px rgba(0,0,0,.32), inset 0 0 0 1px rgba(255,255,255,.025);
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(246,215,122,.16), transparent 28%),
+        radial-gradient(circle at 90% 92%, rgba(123,63,242,.20), transparent 32%);
+      pointer-events: none;
+    }
+    .glass-inner { position: relative; z-index: 1; padding: 26px; }
+
+    .bio-text {
+      color: rgba(246,240,221,.84);
+      line-height: 2;
+      letter-spacing: .06em;
+      font-size: 16px;
+    }
+    .bio-text strong { color: var(--gold-light); font-weight: 700; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 13px;
+      border: 1px solid rgba(246,215,122,.28);
+      border-radius: 999px;
+      color: var(--gold-light);
+      background: rgba(255,255,255,.035);
+      font-size: 13px;
+      letter-spacing: .06em;
+    }
+    .tag::before { content: "✦"; }
+
+    .qr-card { text-align: center; }
+    .qr-card h2 {
+      margin: 0 0 10px;
+      color: var(--gold-light);
+      font-size: 24px;
+      letter-spacing: .12em;
+      font-family: "Noto Serif TC", "Songti TC", serif;
+      font-weight: 500;
+    }
+    .qr-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.75;
+      letter-spacing: .06em;
+      font-size: 14px;
+    }
+    .qr-frame {
+      width: min(240px, 72vw);
+      margin: 0 auto 18px;
+      padding: 12px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff4be, #d4af37 42%, #835d19);
+      box-shadow: 0 0 28px rgba(212,175,55,.28);
+    }
+    .qr-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(246,215,122,.42);
+      background: rgba(255,255,255,.045);
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .08em;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn.primary {
+      color: #211603;
+      border: 0;
+      background: linear-gradient(135deg, #fff0ad, #d4af37 55%, #8a621d);
+      box-shadow: 0 0 20px rgba(212,175,55,.24);
+    }
+    .btn.purple {
+      border-color: rgba(123,63,242,.64);
+      box-shadow: 0 0 20px rgba(123,63,242,.18);
+    }
+
+    .seo-content {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    /* ===== AI 客服 ===== */
+    .ai-chat-launcher {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 1px solid rgba(246,215,122,.74);
+      background:
+        radial-gradient(circle at 35% 22%, rgba(255,255,255,.35), transparent 25%),
+        linear-gradient(135deg, #fff1ad, #d4af37 46%, #835d19);
+      color: #1b1205;
+      box-shadow: 0 0 28px rgba(212,175,55,.38), 0 0 42px rgba(123,63,242,.18);
+      cursor: pointer;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+    }
+    .ai-chat-launcher::after {
+      content: "AI客服";
+      position: absolute;
+      right: 78px;
+      min-width: 70px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(246,215,122,.35);
+      background: rgba(6,7,10,.9);
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: .08em;
+      box-shadow: 0 0 18px rgba(0,0,0,.45);
+    }
+    .ai-chat {
+      position: fixed;
+      right: 22px;
+      bottom: 104px;
+      width: min(400px, calc(100vw - 28px));
+      height: min(640px, calc(100vh - 130px));
+      display: none;
+      flex-direction: column;
+      border-radius: 24px;
+      border: 1px solid rgba(246,215,122,.34);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(212,175,55,.14), transparent 34%),
+        radial-gradient(circle at 100% 20%, rgba(123,63,242,.18), transparent 34%),
+        rgba(5,6,10,.95);
+      color: var(--text);
+      box-shadow: 0 24px 80px rgba(0,0,0,.62), 0 0 26px rgba(212,175,55,.18);
+      overflow: hidden;
+      z-index: 31;
+      backdrop-filter: blur(18px);
+    }
+    .ai-chat.is-open { display: flex; }
+    .ai-chat-header {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid rgba(246,215,122,.18);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .ai-chat-title strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 17px;
+      letter-spacing: .08em;
+    }
+    .ai-chat-title span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .ai-chat-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(246,215,122,.26);
+      background: rgba(255,255,255,.04);
+      color: var(--gold-light);
+      cursor: pointer;
+      font-size: 20px;
+    }
+    .ai-chat-body {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .msg {
+      max-width: 88%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      line-height: 1.7;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+    .msg.bot {
+      align-self: flex-start;
+      border: 1px solid rgba(246,215,122,.2);
+      background: rgba(255,255,255,.045);
+      color: rgba(246,240,221,.9);
+    }
+    .msg.user {
+      align-self: flex-end;
+      color: #211603;
+      background: linear-gradient(135deg, #fff0ad, #d4af37 55%, #9a6e1f);
+      font-weight: 600;
+    }
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 16px;
+      border-top: 1px solid rgba(246,215,122,.12);
+    }
+    .quick-replies button {
+      border: 1px solid rgba(246,215,122,.25);
+      background: rgba(255,255,255,.04);
+      color: var(--gold-light);
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .ai-chat-input {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid rgba(246,215,122,.16);
+      background: rgba(0,0,0,.2);
+    }
+    .ai-chat-input input {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid rgba(246,215,122,.25);
+      background: rgba(255,255,255,.055);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 12px 14px;
+      outline: none;
+      font-size: 14px;
+    }
+    .ai-chat-input input::placeholder { color: rgba(246,240,221,.45); }
+    .ai-chat-input button {
+      border: 0;
+      border-radius: 999px;
+      padding: 0 18px;
+      background: linear-gradient(135deg, #fff0ad, #d4af37 55%, #8a621d);
+      color: #211603;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 29;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .mobile-sticky-cta a,
+    .mobile-sticky-cta button {
+      pointer-events: auto;
+      flex: 1;
+      min-height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(246,215,122,.48);
+      background: rgba(5,6,10,.92);
+      color: var(--gold-light);
+      font-weight: 700;
+      letter-spacing: .08em;
+      box-shadow: 0 0 20px rgba(0,0,0,.45);
+      text-align: center;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .mobile-sticky-cta .primary {
+      color: #211603;
+      background: linear-gradient(135deg, #fff0ad, #d4af37 55%, #8a621d);
+    }
+
+    @media (max-width: 760px) {
+      .page-shell { box-shadow: none; }
+      .info-section { padding: 36px 18px 92px; }
+      .profile-grid { grid-template-columns: 1fr; }
+      .glass-inner { padding: 22px; }
+      .bio-text { font-size: 15px; }
+      .ai-chat-launcher { width: 58px; height: 58px; right: 16px; bottom: 76px; }
+      .ai-chat-launcher::after { display: none; }
+      .ai-chat { right: 14px; bottom: 142px; height: min(560px, calc(100vh - 164px)); }
+      .mobile-sticky-cta { display: flex; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page-shell" aria-label="沐凡老師 Vica 超級名片">
+    <div class="hero-wrap">
+      <img class="hero-image" src="assets/mufan-super-card.png" alt="沐凡老師 Vica｜AI資源整合架構師｜FeiFei AI Universe 超級名片" />
+
+      <!-- 上方導覽列：圖片中的文字選單用透明熱區對應到頁面位置 -->
+      <button class="hotspot nav-home" type="button" onclick="scrollToImagePercent(0)" aria-label="回到首頁"></button>
+      <button class="hotspot nav-about" type="button" onclick="scrollToImagePercent(0.10)" aria-label="跳到關於沐凡"></button>
+      <button class="hotspot nav-service" type="button" onclick="scrollToImagePercent(0.64)" aria-label="跳到服務項目"></button>
+      <button class="hotspot nav-projects" type="button" onclick="scrollToImagePercent(0.43)" aria-label="跳到孵化專案"></button>
+      <button class="hotspot nav-cases" type="button" onclick="scrollToImagePercent(0.43)" aria-label="跳到案例分享"></button>
+      <button class="hotspot nav-contact" type="button" onclick="scrollToImagePercent(0.84)" aria-label="跳到聯絡我"></button>
+
+      <a class="hotspot top-consult" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="立即諮詢"></a>
+      <a class="hotspot hero-consult" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="立即諮詢"></a>
+      <button class="hotspot hero-vcard" type="button" onclick="downloadVCard()" aria-label="儲存名片"></button>
+      <a class="hotspot hero-line" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="加入 Line"></a>
+      <a class="hotspot bottom-consult" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="立即諮詢"></a>
+      <a class="hotspot bottom-line" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="加入 Line"></a>
+      <button class="hotspot bottom-vcard" type="button" onclick="downloadVCard()" aria-label="儲存名片"></button>
+      <a class="hotspot footer-email" href="mailto:vica49131@gmail.com" aria-label="寄信給沐凡老師"></a>
+      <a class="hotspot footer-line" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="沐凡老師 Line"></a>
+      <a class="hotspot footer-web" href="#profile-data" aria-label="查看沐凡老師資料"></a>
+    </div>
+
+    <section class="info-section" id="profile-data">
+      <div class="info-title">
+        <div class="eyebrow">Official Profile</div>
+        <h1>沐凡老師 / Vica</h1>
+        <p>品牌策略顧問｜AI工具導入顧問｜品牌商模架構師</p>
+      </div>
+
+      <div class="profile-grid">
+        <article class="glass-card">
+          <div class="glass-inner">
+            <div class="bio-text">
+              <p><strong>沐凡老師 Vica</strong> 擁有 25 年整合營銷的內化與學習，目前專注於品牌策略顧問、AI 工具導入顧問，也是品牌商模架構師。</p>
+              <p>她協助企業與個人品牌，整合品牌定位、商業模式、AI 自動化與行銷系統，打造具備市場辨識度與長期獲利能力的品牌事業。</p>
+            </div>
+            <div class="tag-row" aria-label="服務標籤">
+              <span class="tag">品牌策略</span>
+              <span class="tag">AI工具導入</span>
+              <span class="tag">品牌商模架構</span>
+              <span class="tag">AI自動化</span>
+              <span class="tag">行銷系統</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass-card qr-card" id="contact">
+          <div class="glass-inner">
+            <h2>加入沐凡官方 Line</h2>
+            <p>掃描 QR Code 或點擊按鈕，立即預約諮詢。</p>
+            <div class="qr-frame">
+              <img src="assets/line-qr.jpg" alt="沐凡老師官方 Line QR Code" />
+            </div>
+            <p>Line ID：<strong style="color: var(--gold-light);">@vica49131</strong></p>
+            <div class="actions">
+              <a class="btn primary" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener">加入 Line</a>
+              <button class="btn purple" type="button" onclick="openChat()">問 AI 客服</button>
+              <button class="btn" type="button" onclick="downloadVCard()">儲存名片</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <section class="seo-content">
+        <h1>沐凡老師 Vica｜AI資源整合架構師</h1>
+        <p>品牌策略顧問、AI工具導入顧問、品牌商模架構師。</p>
+        <p>25年整合營銷的內化及學習，目前專注於品牌策略顧問、AI工具導入顧問，也是品牌商模架構師。協助企業與個人品牌，整合品牌定位、商業模式、AI自動化與行銷系統，打造具備市場辨識度與長期獲利能力的品牌事業。</p>
+        <h2>服務項目</h2>
+        <p>AI資源導入、流量與變現策略、品牌定位與經營、高端人脈連結、專屬顧問服務。</p>
+        <h2>聯絡方式</h2>
+        <p>Line ID：@vica49131，Line加好友網址：https://lin.ee/U39Zb3Z7。</p>
+      </section>
+    </section>
+  </main>
+
+  <div class="mobile-sticky-cta" aria-label="手機版快速操作">
+    <a class="primary" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener">加入 Line</a>
+    <button type="button" onclick="openChat()">AI 客服</button>
+    <button type="button" onclick="downloadVCard()">存名片</button>
+  </div>
+
+  <button class="ai-chat-launcher" type="button" onclick="toggleChat()" aria-label="開啟 AI 客服">✦</button>
+
+  <aside class="ai-chat" id="aiChat" aria-label="菲菲 AI 客服">
+    <div class="ai-chat-header">
+      <div class="ai-chat-title">
+        <strong>菲菲 AI 客服</strong>
+        <span>亞洲智慧女神｜AI自媒體講師｜即時解答課程、報名、AI變現問題</span>
+      </div>
+      <button class="ai-chat-close" type="button" onclick="closeChat()" aria-label="關閉 AI 客服">×</button>
+    </div>
+    <div style="flex:1;overflow:hidden;">
+      <iframe width="100%" height="100%" allow="microphone *" src="https://www.gptbots.ai/widget/eebaucany7ycksqdibknxke/chat.html" style="border:none;"></iframe>
+    </div>
+  </aside>
+
+  <script>
+    function scrollToImagePercent(percent) {
+      const shell = document.querySelector(".page-shell");
+      const image = document.querySelector(".hero-image");
+      if (!shell || !image) return;
+      const top = shell.getBoundingClientRect().top + window.scrollY;
+      const imageHeight = image.getBoundingClientRect().height;
+      const targetY = top + imageHeight * percent - 18;
+      window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+    }
+
+    function toggleChat() {
+      document.getElementById("aiChat").classList.toggle("is-open");
+    }
+    function openChat() {
+      document.getElementById("aiChat").classList.add("is-open");
+    }
+    function closeChat() {
+      document.getElementById("aiChat").classList.remove("is-open");
+    }
+
+    function downloadVCard() {
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:沐凡老師;Vica;;;\nFN:沐凡老師 / Vica\nTITLE:AI資源整合架構師\nORG:FeiFei AI Universe\nEMAIL:vica49131@gmail.com\nURL:https://lin.ee/U39Zb3Z7\nNOTE:品牌策略顧問｜AI工具導入顧問｜品牌商模架構師｜Line ID：@vica49131\nEND:VCARD`;
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "vica-mufan-business-card.vcf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
