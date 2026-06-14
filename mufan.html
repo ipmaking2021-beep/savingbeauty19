@@ -1,602 +1,1364 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>沐凡老師 Vica｜AI資源整合架構師｜超級名片</title>
-  <meta name="description" content="沐凡老師 Vica｜AI資源整合架構師。品牌策略顧問、AI工具導入顧問、品牌商模架構師。協助企業與個人品牌整合品牌定位、商業模式、AI自動化與行銷系統。" />
-  <meta property="og:title" content="沐凡老師 Vica｜AI資源整合架構師" />
-  <meta property="og:description" content="品牌策略顧問｜AI工具導入顧問｜品牌商模架構師｜超級名片服務" />
-  <meta property="og:image" content="assets/mufan-super-card.png" />
-  <meta name="theme-color" content="#050507" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>沐凡｜AI資源整合架構師｜超級名片</title>
 
   <style>
     :root {
       --bg: #050507;
+      --bg-2: #0b0d14;
       --gold: #d4af37;
-      --gold-light: #f6d77a;
-      --gold-dark: #8c651d;
+      --gold-2: #f6d77a;
+      --gold-3: #8a6721;
       --purple: #7b3ff2;
+      --pink: #ff4fd8;
+      --cyan: #00d2ff;
       --text: #f6f0dd;
-      --muted: rgba(246,240,221,.72);
-      --panel: rgba(8, 9, 14, .9);
-      --line: rgba(246, 215, 122, .32);
+      --muted: #b9ad91;
+      --line: rgba(212, 175, 55, 0.38);
+      --card: rgba(9, 11, 18, 0.78);
+      --glass: rgba(255, 255, 255, 0.04);
+      --shadow-gold: 0 0 28px rgba(212, 175, 55, 0.25);
+      --shadow-purple: 0 0 38px rgba(123, 63, 242, 0.28);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at 50% 0%, rgba(123,63,242,.16), transparent 36%),
-        radial-gradient(circle at 50% 100%, rgba(212,175,55,.12), transparent 34%),
-        #030305;
+        radial-gradient(circle at 75% 16%, rgba(123, 63, 242, 0.25), transparent 28%),
+        radial-gradient(circle at 18% 24%, rgba(212, 175, 55, 0.16), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(0, 210, 255, 0.12), transparent 28%),
+        linear-gradient(180deg, #050507 0%, #090b12 52%, #050507 100%);
       color: var(--text);
-      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+      font-family:
+        "Noto Serif TC",
+        "Noto Sans TC",
+        "PingFang TC",
+        "Microsoft JhengHei",
+        serif;
+      overflow-x: hidden;
     }
 
-    a { color: inherit; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+        radial-gradient(circle, rgba(212, 175, 55, 0.35) 1px, transparent 1px);
+      background-size: 58px 58px, 96px 96px;
+      background-position: 0 0, 20px 40px;
+      opacity: 0.18;
+      z-index: 0;
+    }
 
-    .page-shell {
-      width: min(100%, 935px);
-      margin: 0 auto;
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(212, 175, 55, 0.06), transparent 18%, transparent 82%, rgba(212, 175, 55, 0.06)),
+        radial-gradient(circle at 50% 0%, transparent 0%, rgba(0, 0, 0, 0.45) 78%);
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
       position: relative;
-      background: #050507;
-      box-shadow: 0 0 80px rgba(0,0,0,.72), 0 0 0 1px rgba(246,215,122,.12);
+      z-index: 1;
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    /* ===== Decorative Background ===== */
+
+    .orb {
+      position: absolute;
+      border:1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 18px rgba(123, 63, 242, 0.25));
+      animation: float 9s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 520px;
+      height: 520px;
+      right: -260px;
+      top: 170px;
+      background: radial-gradient(circle, rgba(123, 63, 242, 0.16), transparent 65%);
+    }
+
+    .orb.two {
+      width: 360px;
+      height: 360px;
+      left: -220px;
+      top: 520px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.11), transparent 66%);
+    }
+
+    .orb.three {
+      width: 720px;
+      height: 720px;
+      left: 50%;
+      bottom: -420px;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(123, 63, 242, 0.12), transparent 70%);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
+    }
+
+    .light-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.75), transparent);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.45);
+      pointer-events: none;
+      opacity: 0.65;
+    }
+
+    .light-line.l1 {
+      width: 420px;
+      top: 154px;
+      right: 50px;
+      transform: rotate(-9deg);
+    }
+
+    .light-line.l2 {
+      width: 360px;
+      top: 620px;
+      left: -120px;
+      transform: rotate(8deg);
+    }
+
+    /* ===== Header ===== */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(5, 5, 7, 0.88), rgba(5, 5, 7, 0.62));
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+    }
+
+    .nav-wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 250px;
+    }
+
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px solid rgba(246, 215, 122, 0.75);
+      display: grid;
+      place-items: center;
+      color: var(--gold-2);
+      font-size: 34px;
+      font-family: Georgia, serif;
+      background:
+        radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.16), transparent 28%),
+        linear-gradient(135deg, #0b0b0d, #151111);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.22);
+      position: relative;
       overflow: hidden;
     }
 
-    .hero-wrap { position: relative; }
-
-    .hero-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    .hotspot {
+    .brand-logo::after {
+      content: "✦";
       position: absolute;
+      right: 10px;
+      bottom: 9px;
+      font-size: 12px;
+      color: var(--gold);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .brand-title {
+      line-height: 1.2;
+    }
+
+    .brand-title strong {
       display: block;
-      border-radius: 999px;
-      background: transparent;
-      border: 0;
-      outline: none;
-      cursor: pointer;
-      z-index: 5;
-    }
-    .hotspot:focus-visible {
-      outline: 2px solid rgba(246, 215, 122, .9);
-      outline-offset: 3px;
-      box-shadow: 0 0 18px rgba(212, 175, 55, .42);
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      color: var(--gold-2);
     }
 
-    /* 透明點擊熱區：依照圖片比例定位，不顯示外框，因此不會跑版 */
-    .hotspot.top-consult { left: 84.2%; top: 2.6%; width: 13.3%; height: 4.7%; }
-    .hotspot.hero-consult { left: 47.0%; top: 20.1%; width: 14.7%; height: 3.4%; }
-    .hotspot.hero-vcard   { left: 63.3%; top: 20.1%; width: 14.5%; height: 3.4%; }
-    .hotspot.hero-line    { left: 79.5%; top: 20.1%; width: 13.8%; height: 3.4%; }
-    .hotspot.bottom-consult { left: 24.2%; top: 86.35%; width: 16.4%; height: 3.3%; }
-    .hotspot.bottom-line    { left: 43.4%; top: 86.35%; width: 15.2%; height: 3.3%; }
-    .hotspot.bottom-vcard   { left: 61.8%; top: 86.35%; width: 14.8%; height: 3.3%; }
-    .hotspot.footer-email { left: 11.6%; top: 96.05%; width: 24.2%; height: 2.4%; }
-    .hotspot.footer-line  { left: 43.0%; top: 96.05%; width: 17.6%; height: 2.4%; }
-    .hotspot.footer-web   { left: 66.0%; top: 96.05%; width: 25.0%; height: 2.4%; }
-
-
-    /* 上方導覽列透明熱區：點擊圖片上的選項，自動滑到對應內容 */
-    .hotspot.nav-home     { left: 35.7%; top: 1.65%; width: 6.2%; height: 4.4%; }
-    .hotspot.nav-about    { left: 42.6%; top: 1.65%; width: 9.4%; height: 4.4%; }
-    .hotspot.nav-service  { left: 53.2%; top: 1.65%; width: 9.6%; height: 4.4%; }
-    .hotspot.nav-projects { left: 64.7%; top: 1.65%; width: 9.4%; height: 4.4%; }
-    .hotspot.nav-cases    { left: 75.3%; top: 1.65%; width: 8.8%; height: 4.4%; }
-    .hotspot.nav-contact  { left: 84.0%; top: 1.65%; width: 6.8%; height: 4.4%; }
-
-    .info-section {
-      position: relative;
-      padding: 46px 38px 54px;
-      background:
-        radial-gradient(circle at 18% 0%, rgba(212,175,55,.14), transparent 32%),
-        radial-gradient(circle at 88% 10%, rgba(123,63,242,.18), transparent 34%),
-        linear-gradient(180deg, rgba(5,5,7,.98), rgba(7,8,13,.98));
-      border-top: 1px solid rgba(246,215,122,.18);
-    }
-
-    .info-title {
-      text-align: center;
-      margin: 0 auto 30px;
-    }
-    .info-title .eyebrow {
-      color: var(--muted);
+    .brand-title span {
+      display: block;
+      margin-top: 4px;
       font-size: 13px;
-      letter-spacing: .24em;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      color: rgba(246, 240, 221, 0.82);
+    }
+
+    .nav a {
+      position: relative;
+      transition: 0.25s ease;
+    }
+
+    .nav a:hover {
+      color: var(--gold-2);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -10px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
+      transform: scaleX(0);
+      transition: 0.25s ease;
+    }
+
+    .nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 132px;
+      height: 42px;
+      padding: 0 22px;
+      border-radius: 999px;
+      color: #1a1204;
+      background: linear-gradient(135deg, #fff0ad, #d4af37 48%, #8c681e);
+      box-shadow: var(--shadow-gold);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--gold-2);
+      font-size: 22px;
+    }
+
+    /* ===== Hero ===== */
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 72px;
+      padding: 84px 0 56px;
+    }
+
+    .portrait-zone {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 520px;
+    }
+
+    .portrait-glow {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent 48%),
+        radial-gradient(circle at 80% 20%, rgba(123, 63, 242, 0.26), transparent 52%);
+      filter: blur(3px);
+    }
+
+    .royal-frame {
+      position: relative;
+      width: 420px;
+      height: 545px;
+      padding: 22px;
+      border-radius: 50% / 44%;
+      background:
+        linear-gradient(135deg, #7c5317, #fff0a8 18%, #b68227 35%, #f9dc83 50%, #745017 75%, #f6d77a);
+      box-shadow:
+        0 0 0 1px rgba(255, 239, 177, 0.7),
+        0 0 44px rgba(212, 175, 55, 0.35),
+        inset 0 0 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .royal-frame::before {
+      content: "♛";
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 118px;
+      height: 88px;
+      display: grid;
+      place-items: center;
+      color: var(--gold-2);
+      font-size: 62px;
+      text-shadow: 0 0 18px rgba(212, 175, 55, 0.55);
+    }
+
+    .royal-frame::after {
+      content: "";
+      position: absolute;
+      inset: -22px;
+      border-radius: 50% / 44%;
+      border: 1px solid rgba(246, 215, 122, 0.36);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.23), transparent 12%),
+        radial-gradient(circle at 82% 25%, rgba(255, 255, 255, 0.17), transparent 11%),
+        radial-gradient(circle at 12% 72%, rgba(246, 215, 122, 0.18), transparent 12%),
+        radial-gradient(circle at 90% 82%, rgba(246, 215, 122, 0.16), transparent 12%);
+      pointer-events: none;
+    }
+
+    .portrait-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50% / 44%;
+      overflow: hidden;
+      border: 2px solid rgba(40, 23, 5, 0.75);
+      background: #111;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.58);
+    }
+
+    .portrait-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: contrast(1.04) saturate(1.05);
+    }
+
+    .hero-copy {
+      position: relative;
+      padding-top: 12px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--gold-2);
+      letter-spacing: 0.22em;
+      font-size: 14px;
       text-transform: uppercase;
     }
-    .info-title h1 {
-      margin: 10px 0 8px;
-      color: var(--gold-light);
-      font-size: clamp(30px, 6vw, 56px);
-      line-height: 1.15;
-      letter-spacing: .12em;
-      font-family: "Noto Serif TC", "Songti TC", serif;
-      font-weight: 600;
-    }
-    .info-title p {
-      margin: 0;
-      color: rgba(246,240,221,.82);
-      font-size: clamp(15px, 2.8vw, 20px);
-      letter-spacing: .1em;
-      line-height: 1.7;
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
     }
 
-    .profile-grid {
+    .eyebrow::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .hero h1 {
+      font-size: clamp(64px, 8vw, 118px);
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: transparent;
+      background: linear-gradient(180deg, #fff5bd, #d4af37 42%, #8d651c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 0 34px rgba(212, 175, 55, 0.22);
+    }
+
+    .hero h2 {
+      margin-top: 18px;
+      font-size: clamp(24px, 2.3vw, 34px);
+      letter-spacing: 0.28em;
+      color: var(--gold-2);
+      font-weight: 500;
+    }
+
+    .hero-desc {
+      margin-top: 26px;
+      max-width: 610px;
+      color: rgba(246, 240, 221, 0.82);
+      font-size: 18px;
+      line-height: 2;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 28px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--gold-2);
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+      border-color: rgba(246, 215, 122, 0.78);
+    }
+
+    .btn.primary {
+      color: #1b1205;
+      border-color: transparent;
+      background: linear-gradient(135deg, #fff2b8, #d4af37 48%, #8c661c);
+      box-shadow: var(--shadow-gold);
+      font-weight: 700;
+    }
+
+    .btn.purple {
+      border-color: rgba(123, 63, 242, 0.7);
+      color: #f5eaff;
+      background: linear-gradient(135deg, rgba(123, 63, 242, 0.24), rgba(255, 79, 216, 0.1));
+      box-shadow: var(--shadow-purple);
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .badge {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 175, 55, 0.32);
+      background: rgba(255, 255, 255, 0.035);
+      color: rgba(246, 240, 221, 0.82);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+    }
+
+    .badge::before {
+      content: "✦";
+      color: var(--gold);
+      margin-right: 8px;
+    }
+
+    /* ===== Sections ===== */
+
+    section {
+      position: relative;
+      padding: 52px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-title .small {
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title h3 {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--gold-2);
+      font-size: clamp(28px, 3.2vw, 42px);
+      letter-spacing: 0.18em;
+      font-weight: 500;
+    }
+
+    .section-title h3::before,
+    .section-title h3::after {
+      content: "";
+      width: 92px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.85));
+    }
+
+    .section-title h3::after {
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.85), transparent);
+    }
+
+    .section-title p {
+      margin: 12px auto 0;
+      max-width: 720px;
+      color: rgba(246, 240, 221, 0.68);
+      line-height: 1.8;
+      letter-spacing: 0.08em;
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 24px;
-      align-items: stretch;
+      gap: 22px;
     }
 
-    .glass-card {
-      border: 1px solid rgba(246,215,122,.28);
-      border-radius: 24px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)),
-        rgba(8,9,14,.72);
-      box-shadow: 0 18px 44px rgba(0,0,0,.32), inset 0 0 0 1px rgba(255,255,255,.025);
+    .value-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .card {
       position: relative;
       overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+        rgba(4, 6, 11, 0.75);
+      border-radius: 20px;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+        0 16px 40px rgba(0, 0, 0, 0.24);
+      transition: 0.28s ease;
     }
-    .glass-card::before {
+
+    .card::before {
       content: "";
       position: absolute;
       inset: -1px;
       background:
-        radial-gradient(circle at 18% 10%, rgba(246,215,122,.16), transparent 28%),
-        radial-gradient(circle at 90% 92%, rgba(123,63,242,.20), transparent 32%);
+        radial-gradient(circle at 18% 10%, rgba(246, 215, 122, 0.18), transparent 28%),
+        radial-gradient(circle at 90% 92%, rgba(123, 63, 242, 0.22), transparent 32%);
+      opacity: 0.8;
       pointer-events: none;
     }
-    .glass-inner { position: relative; z-index: 1; padding: 26px; }
 
-    .bio-text {
-      color: rgba(246,240,221,.84);
-      line-height: 2;
-      letter-spacing: .06em;
-      font-size: 16px;
-    }
-    .bio-text strong { color: var(--gold-light); font-weight: 700; }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 13px;
-      border: 1px solid rgba(246,215,122,.28);
-      border-radius: 999px;
-      color: var(--gold-light);
-      background: rgba(255,255,255,.035);
-      font-size: 13px;
-      letter-spacing: .06em;
-    }
-    .tag::before { content: "✦"; }
-
-    .qr-card { text-align: center; }
-    .qr-card h2 {
-      margin: 0 0 10px;
-      color: var(--gold-light);
-      font-size: 24px;
-      letter-spacing: .12em;
-      font-family: "Noto Serif TC", "Songti TC", serif;
-      font-weight: 500;
-    }
-    .qr-card p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.75;
-      letter-spacing: .06em;
-      font-size: 14px;
-    }
-    .qr-frame {
-      width: min(240px, 72vw);
-      margin: 0 auto 18px;
-      padding: 12px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #fff4be, #d4af37 42%, #835d19);
-      box-shadow: 0 0 28px rgba(212,175,55,.28);
-    }
-    .qr-frame img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      background: #fff;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .btn {
-      min-height: 46px;
-      padding: 0 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      border: 1px solid rgba(246,215,122,.42);
-      background: rgba(255,255,255,.045);
-      color: var(--gold-light);
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: .08em;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .btn.primary {
-      color: #211603;
-      border: 0;
-      background: linear-gradient(135deg, #fff0ad, #d4af37 55%, #8a621d);
-      box-shadow: 0 0 20px rgba(212,175,55,.24);
-    }
-    .btn.purple {
-      border-color: rgba(123,63,242,.64);
-      box-shadow: 0 0 20px rgba(123,63,242,.18);
-    }
-
-    .seo-content {
+    .card::after {
+      content: "";
       position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
+      left: -80%;
+      top: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      transform: skewX(-18deg);
+      transition: 0.5s ease;
+      pointer-events: none;
     }
 
-    /* ===== AI 客服 ===== */
-    .ai-chat-launcher {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      width: 68px;
-      height: 68px;
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(246, 215, 122, 0.68);
+      box-shadow: var(--shadow-gold), var(--shadow-purple);
+    }
+
+    .card:hover::after {
+      left: 120%;
+    }
+
+    .value-card {
+      min-height: 178px;
+      padding: 34px 32px;
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .icon {
+      position: relative;
+      z-index: 1;
+      width: 70px;
+      height: 70px;
+      flex: 0 0 70px;
       border-radius: 50%;
-      border: 1px solid rgba(246,215,122,.74);
-      background:
-        radial-gradient(circle at 35% 22%, rgba(255,255,255,.35), transparent 25%),
-        linear-gradient(135deg, #fff1ad, #d4af37 46%, #835d19);
-      color: #1b1205;
-      box-shadow: 0 0 28px rgba(212,175,55,.38), 0 0 42px rgba(123,63,242,.18);
-      cursor: pointer;
-      z-index: 30;
       display: grid;
       place-items: center;
-      font-size: 28px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      color: var(--gold-2);
+      font-size: 34px;
+      background: rgba(0, 0, 0, 0.28);
+      box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.06);
     }
-    .ai-chat-launcher::after {
-      content: "AI客服";
-      position: absolute;
-      right: 78px;
-      min-width: 70px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(246,215,122,.35);
-      background: rgba(6,7,10,.9);
-      color: var(--gold-light);
-      font-size: 13px;
-      letter-spacing: .08em;
-      box-shadow: 0 0 18px rgba(0,0,0,.45);
+
+    .card-content {
+      position: relative;
+      z-index: 1;
     }
-    .ai-chat {
-      position: fixed;
-      right: 22px;
-      bottom: 104px;
-      width: min(400px, calc(100vw - 28px));
-      height: min(640px, calc(100vh - 130px));
-      display: none;
-      flex-direction: column;
-      border-radius: 24px;
-      border: 1px solid rgba(246,215,122,.34);
-      background:
-        radial-gradient(circle at 20% 0%, rgba(212,175,55,.14), transparent 34%),
-        radial-gradient(circle at 100% 20%, rgba(123,63,242,.18), transparent 34%),
-        rgba(5,6,10,.95);
-      color: var(--text);
-      box-shadow: 0 24px 80px rgba(0,0,0,.62), 0 0 26px rgba(212,175,55,.18);
-      overflow: hidden;
-      z-index: 31;
-      backdrop-filter: blur(18px);
-    }
-    .ai-chat.is-open { display: flex; }
-    .ai-chat-header {
-      padding: 18px 18px 14px;
-      border-bottom: 1px solid rgba(246,215,122,.18);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-    .ai-chat-title strong {
-      display: block;
-      color: var(--gold-light);
-      font-size: 17px;
-      letter-spacing: .08em;
-    }
-    .ai-chat-title span {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-    .ai-chat-close {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid rgba(246,215,122,.26);
-      background: rgba(255,255,255,.04);
-      color: var(--gold-light);
-      cursor: pointer;
-      font-size: 20px;
-    }
-    .ai-chat-body {
-      flex: 1;
-      padding: 16px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .msg {
-      max-width: 88%;
-      padding: 12px 14px;
-      border-radius: 16px;
-      line-height: 1.7;
-      font-size: 14px;
-      white-space: pre-wrap;
-    }
-    .msg.bot {
-      align-self: flex-start;
-      border: 1px solid rgba(246,215,122,.2);
-      background: rgba(255,255,255,.045);
-      color: rgba(246,240,221,.9);
-    }
-    .msg.user {
-      align-self: flex-end;
-      color: #211603;
-      background: linear-gradient(135deg, #fff0ad, #d4af37 55%, #9a6e1f);
+
+    .card h4 {
+      color: var(--gold-2);
+      font-size: 21px;
+      line-height: 1.45;
+      letter-spacing: 0.12em;
       font-weight: 600;
     }
-    .quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 12px 16px;
-      border-top: 1px solid rgba(246,215,122,.12);
-    }
-    .quick-replies button {
-      border: 1px solid rgba(246,215,122,.25);
-      background: rgba(255,255,255,.04);
-      color: var(--gold-light);
-      border-radius: 999px;
-      padding: 8px 11px;
-      font-size: 12px;
-      cursor: pointer;
-    }
-    .ai-chat-input {
-      display: flex;
-      gap: 8px;
-      padding: 12px;
-      border-top: 1px solid rgba(246,215,122,.16);
-      background: rgba(0,0,0,.2);
-    }
-    .ai-chat-input input {
-      flex: 1;
-      min-width: 0;
-      border: 1px solid rgba(246,215,122,.25);
-      background: rgba(255,255,255,.055);
-      color: var(--text);
-      border-radius: 999px;
-      padding: 12px 14px;
-      outline: none;
-      font-size: 14px;
-    }
-    .ai-chat-input input::placeholder { color: rgba(246,240,221,.45); }
-    .ai-chat-input button {
-      border: 0;
-      border-radius: 999px;
-      padding: 0 18px;
-      background: linear-gradient(135deg, #fff0ad, #d4af37 55%, #8a621d);
-      color: #211603;
-      font-weight: 800;
-      cursor: pointer;
+
+    .card p {
+      margin-top: 12px;
+      color: rgba(246, 240, 221, 0.72);
+      line-height: 1.75;
+      letter-spacing: 0.06em;
+      font-size: 15px;
     }
 
-    .mobile-sticky-cta {
-      display: none;
-      position: fixed;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      z-index: 29;
-      gap: 10px;
-      pointer-events: none;
-    }
-    .mobile-sticky-cta a,
-    .mobile-sticky-cta button {
-      pointer-events: auto;
-      flex: 1;
-      min-height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(246,215,122,.48);
-      background: rgba(5,6,10,.92);
-      color: var(--gold-light);
-      font-weight: 700;
-      letter-spacing: .08em;
-      box-shadow: 0 0 20px rgba(0,0,0,.45);
+    /* ===== Project Cards ===== */
+
+    .project-card {
+      min-height: 230px;
+      padding: 28px 20px;
       text-align: center;
+      border-color: rgba(123, 63, 242, 0.46);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(123, 63, 242, 0.18), transparent 42%),
+        rgba(5, 6, 12, 0.8);
+    }
+
+    .project-card .project-icon {
+      position: relative;
+      z-index: 1;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 18px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
-      text-decoration: none;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    .mobile-sticky-cta .primary {
-      color: #211603;
-      background: linear-gradient(135deg, #fff0ad, #d4af37 55%, #8a621d);
+      border: 1px solid rgba(123, 63, 242, 0.7);
+      color: #d9c7ff;
+      font-size: 38px;
+      background: rgba(123, 63, 242, 0.08);
+      box-shadow:
+        0 0 28px rgba(123, 63, 242, 0.22),
+        inset 0 0 18px rgba(123, 63, 242, 0.1);
     }
 
-    @media (max-width: 760px) {
-      .page-shell { box-shadow: none; }
-      .info-section { padding: 36px 18px 92px; }
-      .profile-grid { grid-template-columns: 1fr; }
-      .glass-inner { padding: 22px; }
-      .bio-text { font-size: 15px; }
-      .ai-chat-launcher { width: 58px; height: 58px; right: 16px; bottom: 76px; }
-      .ai-chat-launcher::after { display: none; }
-      .ai-chat { right: 14px; bottom: 142px; height: min(560px, calc(100vh - 164px)); }
-      .mobile-sticky-cta { display: flex; }
+    .project-card h4 {
+      font-size: 19px;
+      color: var(--gold-2);
+    }
+
+    .project-card p {
+      font-size: 13px;
+      color: rgba(246, 240, 221, 0.66);
+    }
+
+    /* ===== Service Cards ===== */
+
+    .service-card {
+      min-height: 250px;
+      padding: 30px 22px;
+      text-align: center;
+    }
+
+    .service-card .service-icon {
+      position: relative;
+      z-index: 1;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      color: var(--gold-2);
+      font-size: 36px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(212, 175, 55, 0.04));
+      border: 1px solid rgba(212, 175, 55, 0.38);
+    }
+
+    .service-card h4 {
+      font-size: 19px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+    }
+
+    /* ===== Quote Banner ===== */
+
+    .quote {
+      margin: 40px 0 20px;
+      padding: 48px 30px;
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.28);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.13), transparent 42%),
+        linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.035), transparent);
+    }
+
+    .quote p {
+      color: var(--gold-2);
+      font-size: clamp(25px, 3.2vw, 42px);
+      line-height: 1.7;
+      letter-spacing: 0.18em;
+    }
+
+    .quote span {
+      color: var(--muted);
+      display: block;
+      margin-top: 12px;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+    }
+
+    /* ===== CTA ===== */
+
+    .cta-section {
+      padding-bottom: 74px;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 42px;
+      text-align: center;
+      border-radius: 26px;
+      border: 1px solid rgba(246, 215, 122, 0.45);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.16), transparent 28%),
+        radial-gradient(circle at 88% 85%, rgba(123, 63, 242, 0.2), transparent 34%),
+        rgba(8, 10, 17, 0.86);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.025),
+        0 0 48px rgba(212, 175, 55, 0.16);
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    .cta-box h3 {
+      position: relative;
+      z-index: 1;
+      color: var(--gold-2);
+      font-size: clamp(26px, 3vw, 40px);
+      letter-spacing: 0.14em;
+      font-weight: 500;
+    }
+
+    .cta-box p {
+      position: relative;
+      z-index: 1;
+      margin-top: 16px;
+      color: rgba(246, 240, 221, 0.73);
+      font-size: 17px;
+      line-height: 1.8;
+      letter-spacing: 0.08em;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    /* ===== Footer ===== */
+
+    footer {
+      border-top: 1px solid rgba(212, 175, 55, 0.18);
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      flex-wrap: wrap;
+      color: rgba(246, 240, 221, 0.62);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-item b {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ===== Floating Contact ===== */
+
+    .floating-contact {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .float-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px solid rgba(246, 215, 122, 0.5);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.18), transparent 28%),
+        linear-gradient(135deg, #fff0a8, #d4af37 48%, #745017);
+      color: #1a1204;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      box-shadow: var(--shadow-gold);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .float-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    /* ===== Responsive ===== */
+
+    @media (max-width: 1080px) {
+      .nav {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+        place-items: center;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-top: 60px;
+        text-align: center;
+      }
+
+      .hero-copy {
+        order: 1;
+      }
+
+      .portrait-zone {
+        order: 0;
+      }
+
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions,
+      .badges {
+        justify-content: center;
+      }
+
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-grid,
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page,
+      .nav-wrap,
+      .footer-inner {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .brand-title strong {
+        font-size: 15px;
+      }
+
+      .brand-title span {
+        font-size: 11px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 44px 0 30px;
+      }
+
+      .portrait-zone {
+        min-height: 410px;
+      }
+
+      .royal-frame {
+        width: 300px;
+        height: 390px;
+        padding: 16px;
+      }
+
+      .royal-frame::before {
+        top: -42px;
+        font-size: 50px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+      .hero h2 {
+        font-size: 20px;
+        letter-spacing: 0.16em;
+      }
+
+      .hero-desc {
+        font-size: 16px;
+        line-height: 1.85;
+      }
+
+      .section-title h3 {
+        gap: 12px;
+        letter-spacing: 0.1em;
+      }
+
+      .section-title h3::before,
+      .section-title h3::after {
+        width: 38px;
+      }
+
+      .project-grid,
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cta-box {
+        padding: 34px 20px;
+      }
+
+      .footer-inner {
+        gap: 16px;
+        padding: 24px 0;
+      }
+
+      .floating-contact {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+
+    /* ===== AI Chat Widget ===== */
+    .ai-chat {
+      position: fixed;
+      top: 0; right: 0;
+      width: 420px; height: 100vh;
+      background: rgba(5,5,7,0.96);
+      border-left: 1px solid rgba(212,175,55,0.3);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      backdrop-filter: blur(20px);
+    }
+    .ai-chat.open { transform: translateX(0); }
+    .ai-chat-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 18px; border-bottom: 1px solid rgba(212,175,55,0.25);
+      background: rgba(212,175,55,0.08);
+      flex-shrink: 0;
+    }
+    .ai-chat-title { display: flex; flex-direction: column; gap: 2px; }
+    .ai-chat-title strong { color: var(--gold-2); font-size: 15px; }
+    .ai-chat-title span { color: var(--muted); font-size: 11px; }
+    .ai-chat-close {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid rgba(212,175,55,0.4); background: transparent;
+      color: var(--gold-2); font-size: 20px; cursor: pointer;
+      display: grid; place-items: center;
+    }
+    .chat-fab {
+      position: fixed; right: 24px; bottom: 90px; z-index: 9998;
+      width: 60px; height: 60px; border-radius: 50%;
+      border: 1px solid rgba(123,63,242,0.6);
+      background: linear-gradient(135deg,#7b3ff2,#a855f7);
+      color: #fff; font-size: 26px;
+      box-shadow: 0 4px 24px rgba(123,63,242,0.4);
+      cursor: pointer; transition: 0.25s ease;
+      display: grid; place-items: center;
+      animation: pulse-ring 2.5s infinite;
+    }
+    .chat-fab:hover { transform: scale(1.08); }
+    @keyframes pulse-ring {
+      0%,100% { box-shadow: 0 4px 24px rgba(123,63,242,0.4); }
+      50% { box-shadow: 0 4px 36px rgba(123,63,242,0.6), 0 0 0 10px rgba(123,63,242,0); }
     }
   </style>
 </head>
 
 <body>
-  <main class="page-shell" aria-label="沐凡老師 Vica 超級名片">
-    <div class="hero-wrap">
-      <img class="hero-image" src="assets/mufan-super-card.png" alt="沐凡老師 Vica｜AI資源整合架構師｜FeiFei AI Universe 超級名片" />
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+  <div class="light-line l1"></div>
+  <div class="light-line l2"></div>
 
-      <!-- 上方導覽列：圖片中的文字選單用透明熱區對應到頁面位置 -->
-      <button class="hotspot nav-home" type="button" onclick="scrollToImagePercent(0)" aria-label="回到首頁"></button>
-      <button class="hotspot nav-about" type="button" onclick="scrollToImagePercent(0.10)" aria-label="跳到關於沐凡"></button>
-      <button class="hotspot nav-service" type="button" onclick="scrollToImagePercent(0.64)" aria-label="跳到服務項目"></button>
-      <button class="hotspot nav-projects" type="button" onclick="scrollToImagePercent(0.43)" aria-label="跳到孵化專案"></button>
-      <button class="hotspot nav-cases" type="button" onclick="scrollToImagePercent(0.43)" aria-label="跳到案例分享"></button>
-      <button class="hotspot nav-contact" type="button" onclick="scrollToImagePercent(0.84)" aria-label="跳到聯絡我"></button>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="#top" class="brand" aria-label="沐凡 AI資源整合">
+        <div class="brand-logo"><img src="mufan-super-card.png" alt="沐凡"></div>
+        <div class="brand-title">
+          <strong>沐凡｜Vica</strong>
+          <span>AI資源整合架構師｜FeiFei AI Universe</span>
+        </div>
+      </a>
 
-      <a class="hotspot top-consult" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="立即諮詢"></a>
-      <a class="hotspot hero-consult" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="立即諮詢"></a>
-      <button class="hotspot hero-vcard" type="button" onclick="downloadVCard()" aria-label="儲存名片"></button>
-      <a class="hotspot hero-line" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="加入 Line"></a>
-      <a class="hotspot bottom-consult" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="立即諮詢"></a>
-      <a class="hotspot bottom-line" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="加入 Line"></a>
-      <button class="hotspot bottom-vcard" type="button" onclick="downloadVCard()" aria-label="儲存名片"></button>
-      <a class="hotspot footer-email" href="mailto:vica49131@gmail.com" aria-label="寄信給沐凡老師"></a>
-      <a class="hotspot footer-line" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener" aria-label="沐凡老師 Line"></a>
-      <a class="hotspot footer-web" href="#profile-data" aria-label="查看沐凡老師資料"></a>
+      <nav class="nav">
+        <a href="#top">首頁</a>
+        <a href="#about">關於沐凡</a>
+        <a href="#value">核心價值</a>
+        <a href="#projects">孵化專案</a>
+        <a href="#service">服務項目</a>
+        <a href="#contact">聯絡我</a>
+      </nav>
+
+      <a href="#contact" class="nav-cta">立即諮詢</a>
+      <button class="menu-btn" type="button" onclick="scrollToSection('contact')">☰</button>
+    </div>
+  </header>
+
+  <main id="top" class="page">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <div class="portrait-zone">
+        <div class="portrait-glow"></div>
+
+        <div class="royal-frame">
+          <div class="portrait-inner">
+            <img src="mufan-super-card.png" alt="沐凡｜AI資源整合架構師" />
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="eyebrow">Super Business Card</div>
+        <h1>沐凡</h1>
+        <h2>AI資源整合架構師</h2>
+
+        <p class="hero-desc">
+          整合 AI 工具、品牌策略、流量變現與高端資源，<br>
+          協助個人與團隊打造可持續成長的超級名片系統。
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">立即諮詢 →</a>
+          <a class="btn" href="javascript:void(0)" onclick="downloadVCard()">▣ 儲存名片</a>
+          <a class="btn purple" href="https://line.me/R/ti/p/@mufan.ai" target="_blank">LINE 加入</a>
+        </div>
+
+        <div class="badges">
+          <span class="badge">AI 整合</span>
+          <span class="badge">品牌經營</span>
+          <span class="badge">流量變現</span>
+          <span class="badge">高端連結</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Value -->
+    <section id="value">
+      <div class="section-title">
+        <div class="small">Core Value</div>
+        <h3>我的核心價值</h3>
+        <p>用 AI 建立可複製、可放大、可長期運轉的個人與團隊成長系統。</p>
+      </div>
+
+      <div class="grid value-grid">
+        <article class="card value-card">
+          <div class="icon">⚙</div>
+          <div class="card-content">
+            <h4>AI × 自動化</h4>
+            <p>打造 24 小時不下班的 AI 團隊，提升效率，擴大影響力。</p>
+          </div>
+        </article>
+
+        <article class="card value-card">
+          <div class="icon">◎</div>
+          <div class="card-content">
+            <h4>流量 × 變現</h4>
+            <p>建立源源不斷的流量系統，讓價值被看見，收益倍增。</p>
+          </div>
+        </article>
+
+        <article class="card value-card">
+          <div class="icon">♟</div>
+          <div class="card-content">
+            <h4>品牌 × 影響力</h4>
+            <p>成為有影響力的關鍵人物，吸引更多合作與機會。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="section-title">
+        <div class="small">Incubation Projects</div>
+        <h3>落地孵化專案進行中</h3>
+        <p>真實專案 × 實戰拆解，從品牌定位、內容流量、轉換系統到資源整合，逐步落地。</p>
+      </div>
+
+      <div class="grid project-grid">
+        <article class="card project-card">
+          <div class="project-icon">⌂</div>
+          <h4>包租代管</h4>
+          <p>資產管理 × 穩定收益</p>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-icon">♧</div>
+          <h4>尋仙找茶<br>品牌孵化</h4>
+          <p>品牌打造 × 市場破圈</p>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-icon">♛</div>
+          <h4>貓貓自媒體<br>自動銷售</h4>
+          <p>內容自動化 × 精準轉換</p>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-icon">♀</div>
+          <h4>美業連鎖店<br>開店招募計劃</h4>
+          <p>系統複製 × 人才招募</p>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-icon">▻</div>
+          <h4>100 支網紅網劇<br>雙引擎計劃</h4>
+          <p>內容矩陣 × 流量變現</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="service">
+      <div class="section-title">
+        <div class="small">Service Items</div>
+        <h3>沐凡的超級名片服務項目</h3>
+        <p>不是只做一張名片，而是協助你把個人品牌、AI工具、內容流量與成交系統整合成一套可運作的入口。</p>
+      </div>
+
+      <div class="grid service-grid">
+        <article class="card service-card">
+          <div class="service-icon">▤</div>
+          <h4>AI 資源導入</h4>
+          <p>導入最新 AI 工具，提升個人與團隊競爭力。</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="service-icon">↗</div>
+          <h4>流量與變現策略</h4>
+          <p>客製化流量布局，打造高效收入系統。</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="service-icon">●</div>
+          <h4>品牌定位與經營</h4>
+          <p>塑造高端個人人設，建立專屬影響力。</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="service-icon">✺</div>
+          <h4>高端人脈連結</h4>
+          <p>賦能優質資源與人脈，拓展無限可能。</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="service-icon">⌕</div>
+          <h4>專屬顧問服務</h4>
+          <p>一對一策略諮詢，陪伴您實現目標。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <div class="quote">
+      <p>讓我們一起，用科技與智慧，創造更有意義的未來</p>
+      <span>AI × 品牌 × 流量 × 自動化 × 變現</span>
     </div>
 
-    <section class="info-section" id="profile-data">
-      <div class="info-title">
-        <div class="eyebrow">Official Profile</div>
-        <h1>沐凡老師 / Vica</h1>
-        <p>品牌策略顧問｜AI工具導入顧問｜品牌商模架構師</p>
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+      <div class="cta-box">
+        <h3>準備好打造您的專屬名片系統了嗎？</h3>
+        <p>
+          立即聯繫沐凡，從超級名片開始，<br>
+          開啟您的 AI 變現新篇章。
+        </p>
+
+        <div style="margin:24px auto 20px;max-width:220px;">
+          <img src="line-qr.jpg" alt="Line QR Code" style="width:100%;border-radius:16px;border:1px solid rgba(212,175,55,0.4);" />
+          <p style="color:var(--muted);font-size:13px;margin-top:8px;letter-spacing:0.08em;">掃描加入 Line 取得最新資訊</p>
+        </div>
+
+        <div class="cta-actions">
+          <a class="btn primary" href="https://line.me/R/ti/p/@mufan.ai" target="_blank">立即諮詢</a>
+          <a class="btn purple" href="https://line.me/R/ti/p/@mufan.ai" target="_blank">加入 Line</a>
+          <a class="btn" href="javascript:void(0)" onclick="downloadVCard()">儲存名片</a>
+        </div>
       </div>
-
-      <div class="profile-grid">
-        <article class="glass-card">
-          <div class="glass-inner">
-            <div class="bio-text">
-              <p><strong>沐凡老師 Vica</strong> 擁有 25 年整合營銷的內化與學習，目前專注於品牌策略顧問、AI 工具導入顧問，也是品牌商模架構師。</p>
-              <p>她協助企業與個人品牌，整合品牌定位、商業模式、AI 自動化與行銷系統，打造具備市場辨識度與長期獲利能力的品牌事業。</p>
-            </div>
-            <div class="tag-row" aria-label="服務標籤">
-              <span class="tag">品牌策略</span>
-              <span class="tag">AI工具導入</span>
-              <span class="tag">品牌商模架構</span>
-              <span class="tag">AI自動化</span>
-              <span class="tag">行銷系統</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="glass-card qr-card" id="contact">
-          <div class="glass-inner">
-            <h2>加入沐凡官方 Line</h2>
-            <p>掃描 QR Code 或點擊按鈕，立即預約諮詢。</p>
-            <div class="qr-frame">
-              <img src="assets/line-qr.jpg" alt="沐凡老師官方 Line QR Code" />
-            </div>
-            <p>Line ID：<strong style="color: var(--gold-light);">@vica49131</strong></p>
-            <div class="actions">
-              <a class="btn primary" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener">加入 Line</a>
-              <button class="btn purple" type="button" onclick="openChat()">問 AI 客服</button>
-              <button class="btn" type="button" onclick="downloadVCard()">儲存名片</button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <section class="seo-content">
-        <h1>沐凡老師 Vica｜AI資源整合架構師</h1>
-        <p>品牌策略顧問、AI工具導入顧問、品牌商模架構師。</p>
-        <p>25年整合營銷的內化及學習，目前專注於品牌策略顧問、AI工具導入顧問，也是品牌商模架構師。協助企業與個人品牌，整合品牌定位、商業模式、AI自動化與行銷系統，打造具備市場辨識度與長期獲利能力的品牌事業。</p>
-        <h2>服務項目</h2>
-        <p>AI資源導入、流量與變現策略、品牌定位與經營、高端人脈連結、專屬顧問服務。</p>
-        <h2>聯絡方式</h2>
-        <p>Line ID：@vica49131，Line加好友網址：https://lin.ee/U39Zb3Z7。</p>
-      </section>
     </section>
   </main>
 
-  <div class="mobile-sticky-cta" aria-label="手機版快速操作">
-    <a class="primary" href="https://lin.ee/U39Zb3Z7" target="_blank" rel="noopener">加入 Line</a>
-    <button type="button" onclick="openChat()">AI 客服</button>
-    <button type="button" onclick="downloadVCard()">存名片</button>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-item"><b>✉</b> hello@mufan-ai.com</div>
+      <div class="footer-item"><b>LINE</b> @mufan.ai</div>
+      <div class="footer-item"><b>◎</b> www.mufan-ai.com</div>
+    </div>
+  </footer>
+
+  <div class="floating-contact">
+    <button class="float-btn" type="button" onclick="scrollToSection('contact')" title="立即諮詢">✦</button>
   </div>
 
-  <button class="ai-chat-launcher" type="button" onclick="toggleChat()" aria-label="開啟 AI 客服">✦</button>
-
+  <!-- AI Chat Widget -->
+  <button class="chat-fab" type="button" onclick="toggleChat()" title="AI 客服">💬</button>
   <aside class="ai-chat" id="aiChat" aria-label="菲菲 AI 客服">
     <div class="ai-chat-header">
       <div class="ai-chat-title">
         <strong>菲菲 AI 客服</strong>
-        <span>亞洲智慧女神｜AI自媒體講師｜即時解答課程、報名、AI變現問題</span>
+        <span>亞洲智慧女神｜即時解答課程、報名、AI變現問題</span>
       </div>
-      <button class="ai-chat-close" type="button" onclick="closeChat()" aria-label="關閉 AI 客服">×</button>
+      <button class="ai-chat-close" type="button" onclick="closeChat()">×</button>
     </div>
     <div style="flex:1;overflow:hidden;">
-      <iframe width="100%" height="100%" allow="microphone *" src="https://www.gptbots.ai/widget/eebaucany7ycksqdibknxke/chat.html" style="border:none;"></iframe>
+      <iframe width="100%" height="100%" allow="microphone *"
+        src="https://www.gptbots.ai/widget/eebaucany7ycksqdibknxke/chat.html"
+        style="border:none;"></iframe>
     </div>
   </aside>
 
   <script>
-    function scrollToImagePercent(percent) {
-      const shell = document.querySelector(".page-shell");
-      const image = document.querySelector(".hero-image");
-      if (!shell || !image) return;
-      const top = shell.getBoundingClientRect().top + window.scrollY;
-      const imageHeight = image.getBoundingClientRect().height;
-      const targetY = top + imageHeight * percent - 18;
-      window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
-    }
-
     function toggleChat() {
-      document.getElementById("aiChat").classList.toggle("is-open");
-    }
-    function openChat() {
-      document.getElementById("aiChat").classList.add("is-open");
+      document.getElementById("aiChat").classList.toggle("open");
     }
     function closeChat() {
-      document.getElementById("aiChat").classList.remove("is-open");
+      document.getElementById("aiChat").classList.remove("open");
+    }
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
 
     function downloadVCard() {
-      const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:沐凡老師;Vica;;;\nFN:沐凡老師 / Vica\nTITLE:AI資源整合架構師\nORG:FeiFei AI Universe\nEMAIL:vica49131@gmail.com\nURL:https://lin.ee/U39Zb3Z7\nNOTE:品牌策略顧問｜AI工具導入顧問｜品牌商模架構師｜Line ID：@vica49131\nEND:VCARD`;
+      const vcard = `BEGIN:VCARD
+VERSION:3.0
+N:沐凡;;;;
+FN:沐凡
+TITLE:AI資源整合架構師
+ORG:FeiFei AI Universe
+EMAIL:hello@mufan-ai.com
+URL:https://www.mufan-ai.com
+NOTE:AI資源整合｜品牌策略｜流量變現｜高端資源連結
+END:VCARD`;
+
       const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "vica-mufan-business-card.vcf";
+      link.download = "mufan-ai-business-card.vcf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
